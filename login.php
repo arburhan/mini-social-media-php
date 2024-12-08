@@ -9,11 +9,12 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="login_process.php" method="post">
+        <form action="" method="post">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
+        <p class='regiHere'>You have no account? <span>Registration Now</span></p>
     </div>
 </body>
 </html>
