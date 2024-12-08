@@ -26,7 +26,7 @@ label {
     margin-bottom: 5px;
 }
 
-.login-container input[type="text"],
+.login-container input[type="email"],
 .login-container input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -63,7 +63,7 @@ label {
     font-size: 14px;
 }
 
-.regiHere>span {
+.regiHere>a {
     color: blue;
     cursor: pointer;
     font-weight: bold;

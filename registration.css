@@ -62,7 +62,7 @@ input[type="submit"]:hover {
     font-size: 14px;
 }
 
-.loginHere>span {
+.loginHere>a {
     color: blue;
     cursor: pointer;
     font-weight: bold;

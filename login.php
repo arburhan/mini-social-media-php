@@ -10,11 +10,11 @@
     <div class="login-container">
         <h2>Login</h2>
         <form action="" method="post">
-            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
-        <p class='regiHere'>You have no account? <span>Registration Now</span></p>
+        <p class='regiHere'>You have no account? <a href="registration.php" >Registration Now</a></p>
     </div>
 </body>
 </html>

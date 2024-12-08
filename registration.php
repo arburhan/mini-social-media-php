@@ -62,7 +62,7 @@
             <br>
             <input type="submit" name="submit" value="Register">
         </form>
-        <p class='loginHere'>Already have an account? <span>Login Now</span></p>
+        <p class='loginHere'>Already have an account? <a href="login.php">Login Now</a></p>
     </div>
 </body>
 </html>
