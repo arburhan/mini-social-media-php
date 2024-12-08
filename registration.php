@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="registration.css"> 
 </head>
 <body>
-    <div class="registration-form">
+    <div class="container">
         <h2>Register</h2>
         <?php
         $nameErr = $emailErr = $passwordErr = "";
@@ -51,20 +51,18 @@
         ?>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="<?php echo $name;?>">
-            <span class="error">* <?php echo $nameErr;?></span>
-            <br><br>
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" value="<?php echo $email;?>">
-            <span class="error">* <?php echo $emailErr;?></span>
-            <br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" value="<?php echo $password;?>">
-            <span class="error">* <?php echo $passwordErr;?></span>
-            <br><br>
+            <input type="text" id="name" name="name" placeholder='Name' value="<?php echo $name;?>">
+            <span class="error"> <?php echo $nameErr;?></span>
+            <br>
+            <input type="text" id="email" name="email" placeholder='Email' value="<?php echo $email;?>">
+            <span class="error"> <?php echo $emailErr;?></span>
+            <br>
+            <input type="password" id="password" name="password" placeholder='Password' value="<?php echo $password;?>">
+            <span class="error"> <?php echo $passwordErr;?></span>
+            <br>
             <input type="submit" name="submit" value="Register">
         </form>
+        <p class='loginHere'>Already have an account? <span>Login Now</span></p>
     </div>
 </body>
 </html>
