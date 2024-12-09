@@ -30,15 +30,39 @@
             }
 
             if (empty($emailErr) && empty($passwordErr)) {
-                // Here you would typically check the credentials against a database
-                // For demonstration purposes, let's assume the credentials are correct
-                if ($email == "user@example.com" && $password == "password") {
-                    // Redirect to a different page or set session variables
-                    header("Location: welcome.php");
-                    exit();
+                // Database connection
+                $servername = "localhost";
+                $username = "root";
+                $db_password = "root";
+                $dbname = "phpProject";
+
+                $conn = new mysqli($servername, $username, $db_password, $dbname);
+
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT * FROM users WHERE email = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    if (password_verify($password, $row['password'])) {
+                        // Redirect to dashboard
+                        header("Location: dashboard.php");
+                        exit();
+                    } else {
+                        $loginErr = "Invalid email or password";
+                    }
                 } else {
                     $loginErr = "Invalid email or password";
                 }
+
+                $stmt->close();
+                $conn->close();
             }
         }
 
