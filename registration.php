@@ -36,9 +36,59 @@
                 $passwordErr = "Password is required";
             } else {
                 $password = test_input($_POST["password"]);
-                if (strlen($password) < 6) {
-                    $passwordErr = "Password must be at least 6 characters";
+                if (strlen($password) < 8) {
+                    $passwordErr = "Password must be at least 8 characters";
                 }
+            }
+
+            if (empty($nameErr) && empty($emailErr) && empty($passwordErr)) {
+                $servername = "localhost";
+                $username = "root";
+                $password = "root";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                // Create database if not exists
+                $createDBsql = "CREATE DATABASE IF NOT EXISTS phpProject";
+                if ($conn->query($createDBsql) === TRUE) {
+                    $conn->select_db("phpProject");
+
+                    // Create table if not exists
+                    $addValueonTable = "CREATE TABLE IF NOT EXISTS users (
+                        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        name VARCHAR(30) NOT NULL,
+                        email VARCHAR(50) NOT NULL,
+                        password VARCHAR(255) NOT NULL,
+                        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                    )";
+
+                    if ($conn->query($addValueonTable) === TRUE) {
+                        // Insert user data into table
+                        $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+                        $stmt->bind_param("sss", $name, $email, password_hash($password, PASSWORD_DEFAULT));
+
+                        if ($stmt->execute()) {
+                            header("Location: login.php");
+                            exit();
+                        } else {
+                            echo "Error: " . $stmt->error;
+                        }
+
+                        $stmt->close();
+                    } else {
+                        echo "Error creating table: " . $conn->error;
+                    }
+                } else {
+                    echo "Error creating database: " . $conn->error;
+                }
+
+                $conn->close();
             }
         }
 
