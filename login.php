@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="registration.css"> 
 </head>
 <body>
-    <div class="login-container">
+    <div class="container">
         <h2>Login</h2>
         <?php
+        $emailErr = $passwordErr = "";
         $email = $password = "";
-        $emailErr = $passwordErr = $loginErr = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["email"])) {
                 $emailErr = "Email is required";
             } else {
                 $email = test_input($_POST["email"]);
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $emailErr = "Invalid email format";
-                }
             }
 
             if (empty($_POST["password"])) {
@@ -30,35 +27,40 @@
             }
 
             if (empty($emailErr) && empty($passwordErr)) {
-                // Database connection
                 $servername = "localhost";
                 $username = "root";
-                $db_password = "root";
-                $dbname = "phpProject";
+                $dbpassword = "root";
 
-                $conn = new mysqli($servername, $username, $db_password, $dbname);
+                // Create connection
+                $conn = new mysqli($servername, $username, $dbpassword, "phpProject");
 
+                // Check connection
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT * FROM users WHERE email = ?";
-                $stmt = $conn->prepare($sql);
+                // Prepare and execute query
+                $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
                 $stmt->bind_param("s", $email);
                 $stmt->execute();
                 $result = $stmt->get_result();
 
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    if (password_verify($password, $row['password'])) {
-                        // Redirect to dashboard
+                if ($result->num_rows === 1) {
+                    $user = $result->fetch_assoc();
+                    if (password_verify($password, $user['password'])) {
+                        // Start session and store user data
+                        session_start();
+                        $_SESSION['user_id'] = $user['id'];
+                        $_SESSION['user_name'] = $user['name'];
+                        
+                        // Redirect to dashboard or home page
                         header("Location: dashboard.php");
                         exit();
                     } else {
-                        $loginErr = "Invalid email or password";
+                        echo "Invalid email or password";
                     }
                 } else {
-                    $loginErr = "Invalid email or password";
+                    echo "Invalid email or password";
                 }
 
                 $stmt->close();
@@ -73,15 +75,17 @@
             return $data;
         }
         ?>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required>
-            <span class="error"><?php echo $emailErr; ?></span>
-            <input type="password" name="password" placeholder="Password" required>
-            <span class="error"><?php echo $passwordErr; ?></span>
-            <input type="submit" value="Login">
+
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <input type="text" id="email" name="email" placeholder='Email' value="<?php echo $email;?>">
+            <span class="error"><?php echo $emailErr;?></span>
+            <br>
+            <input type="password" id="password" name="password" placeholder='Password'>
+            <span class="error"><?php echo $passwordErr;?></span>
+            <br>
+            <input type="submit" name="submit" value="Login">
         </form>
-        <span class="error"><?php echo $loginErr; ?></span>
-        <p class='regiHere'>You have no account? <a href="registration.php" >Registration Now</a></p>
+        <p class='loginHere'>Don't have an account? <a href="registration.php">Register Now</a></p>
     </div>
 </body>
 </html>
