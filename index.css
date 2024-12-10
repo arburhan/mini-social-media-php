@@ -105,6 +105,25 @@ main {
     color: #333;
 }
 
+.post-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.post-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.post-buttons button:hover {
+    background-color: #0056b3;
+}
+
 /* Footer styling */
 footer {
     text-align: center;

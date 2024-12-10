@@ -60,15 +60,39 @@
                     $conn->select_db("phpProject");
 
                     // Create table if not exists
-                    $addValueonTable = "CREATE TABLE IF NOT EXISTS users (
+                    $createUserTable = "CREATE TABLE IF NOT EXISTS users (
                         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                         name VARCHAR(30) NOT NULL,
                         email VARCHAR(50) NOT NULL,
                         password VARCHAR(255) NOT NULL,
                         reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                     )";
+                    $createPostTable = "CREATE TABLE IF NOT EXISTS posts (
+                        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        user_id INT(6) UNSIGNED,
+                        content TEXT NOT NULL,
+                        post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        FOREIGN KEY (user_id) REFERENCES users(id)
+                    )";
+                    $createLikeTable = "CREATE TABLE IF NOT EXISTS likes (
+                        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        user_id INT(6) UNSIGNED,
+                        post_id INT(6) UNSIGNED,
+                        like_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        FOREIGN KEY (user_id) REFERENCES users(id),
+                        FOREIGN KEY (post_id) REFERENCES posts(id)
+                    )";
+                    $createCommentTable = "CREATE TABLE IF NOT EXISTS comments (
+                        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        user_id INT(6) UNSIGNED,
+                        post_id INT(6) UNSIGNED,
+                        content TEXT NOT NULL,
+                        comment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        FOREIGN KEY (user_id) REFERENCES users(id),
+                        FOREIGN KEY (post_id) REFERENCES posts(id)
+                    )";
 
-                    if ($conn->query($addValueonTable) === TRUE) {
+                    if ($conn->query($createUserTable) === TRUE && $conn->query($createPostTable) === TRUE && $conn->query($createLikeTable) === TRUE && $conn->query($createCommentTable) === TRUE) {
                         // Insert user data into table
                         $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
                         $stmt->bind_param("sss", $name, $email, password_hash($password, PASSWORD_DEFAULT));

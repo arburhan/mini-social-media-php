@@ -20,16 +20,21 @@
     </header>
     <main>
         <section class="status-update">
-            <form action="post.php" method="post">
-                <textarea name="status" placeholder="What's happening?" required></textarea>
+            <form action="submitPost.php" method="post">
+                <textarea name="content" placeholder="What's happening?" required></textarea>
                 <button type="submit">Post</button>
             </form>
         </section>
         <section class="feed">
             <!-- Posts will be displayed here -->
             <article class="post">
-                <h2>User Name</h2>
+                <h3>User Name</h3>
                 <p>This is a sample post in the feed.</p>
+                <div class="post-buttons">
+                    <button class="like-button">Like</button>
+                    <button class="comment-button">Comment</button>
+                    <button class="share-button">Share</button>
+                </div>
             </article>
             <!-- Repeat post structure for more posts -->
         </section>
