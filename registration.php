@@ -44,10 +44,10 @@
             if (empty($nameErr) && empty($emailErr) && empty($passwordErr)) {
                 $servername = "localhost";
                 $username = "root";
-                $password = "root";
+                $dbPassword  = "root";
 
                 // Create connection
-                $conn = new mysqli($servername, $username, $password);
+                $conn = new mysqli($servername, $username, $dbPassword );
 
                 // Check connection
                 if ($conn->connect_error) {
@@ -101,7 +101,7 @@
         ?>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <input type="text" id="name" name="name" placeholder='Name' value="<?php echo $name;?>">
+            <input type="text" id="name" name="name" placeholder='User Name' value="<?php echo $name;?>">
             <span class="error"> <?php echo $nameErr;?></span>
             <br>
             <input type="text" id="email" name="email" placeholder='Email' value="<?php echo $email;?>">
@@ -112,7 +112,8 @@
             <br>
             <input type="submit" name="submit" value="Register">
         </form>
-        <p class='loginHere'>Already have an account? <a href="login.php">Login Now</a></p>
+        <p class='loginHere'
+        >Already have an account? <a href="login.php">Login Now</a></p>
     </div>
 </body>
 </html>
