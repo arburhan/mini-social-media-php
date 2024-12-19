@@ -71,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
     <meta charset="UTF-8">
     <title>My Social Media App</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="navbar.css">
     <script src="https://kit.fontawesome.com/73e098e640.js" crossorigin="anonymous"></script>
     <script>
     function toggleCommentForm(postId) {
@@ -189,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
         </section>
     </main>
     <footer>
-        <p>&copy; 2023 MySocialApp. All rights reserved.</p>
+        <p>&copy; 2024 MySocialApp. All rights reserved.</p>
     </footer>
     <?php
     // Close the database connection
