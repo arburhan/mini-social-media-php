@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Page</title>
     <link rel="stylesheet" href="registration.css"> 
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
-    <div class="container">
+<header>
+        <div class="logo">MySocialApp</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Notifications</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+   <main>
+   <div class="container">
         <h2>Register</h2>
         <?php
         $nameErr = $emailErr = $passwordErr = "";
@@ -139,5 +153,6 @@
         <p class='loginHere'
         >Already have an account? <a href="login.php">Login Now</a></p>
     </div>
+   </main>
 </body>
 </html>
