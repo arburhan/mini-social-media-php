@@ -11,10 +11,10 @@
 </head>
 <body>
 <header>
-        <div class="logo">art</div>
+        <a class="logo" href="index.php">art</a>
         <nav>
         <ul>
-            <li><a href="#"><i class="fas fa-home" style="font-size: 25px;"></i> </a></li>
+            <li><a href="index.php"><i class="fas fa-home" style="font-size: 25px;"></i> </a></li>
             <li><a href="#"><i class="fas fa-compass" style="font-size: 25px; margin: 0px 25px"></i> </a></li>
             <li><a href="#"><i class="fas fa-bell" style="font-size: 25px;"></i> </a></li>
             <li><a href="#"><i class="fas fa-envelope" style="font-size: 25px;  margin: 0px 25px"></i> </a></li>
@@ -70,7 +70,7 @@
                         $_SESSION['user_name'] = $user['name'];
                         
                         // Redirect to dashboard or home page
-                        header("Location: dashboard.php");
+                        header("Location: index.php");
                         exit();
                     } else {
                         echo "Invalid email or password";

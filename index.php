@@ -23,14 +23,14 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like_post_id'])) {
     $post_id = intval($_POST['like_post_id']);
 
-    // Check if the user has already liked the post
-    $check_like_sql = "SELECT * FROM likes WHERE user_id = ? AND post_id = ?";
-    $check_like_stmt = $conn->prepare($check_like_sql);
-    $check_like_stmt->bind_param("ii", $user_id, $post_id);
-    $check_like_stmt->execute();
-    $check_like_result = $check_like_stmt->get_result();
+    // Check if the user has already liked this post
+    $like_check_sql = "SELECT * FROM likes WHERE user_id = ? AND post_id = ?";
+    $like_check_stmt = $conn->prepare($like_check_sql);
+    $like_check_stmt->bind_param("ii", $user_id, $post_id);
+    $like_check_stmt->execute();
+    $like_check_result = $like_check_stmt->get_result();
 
-    if ($check_like_result->num_rows === 0) {
+    if ($like_check_result->num_rows === 0) {
         // Insert like into the database
         $like_sql = "INSERT INTO likes (user_id, post_id) VALUES (?, ?)";
         $like_stmt = $conn->prepare($like_sql);
@@ -88,10 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
 </head>
 <body>
     <header>
-        <div class="nlogo">art</div>
+    <a class="logo" href="index.php">art</a>
         <nav>
         <ul>
-        <li><a href="#"><i class="fas fa-home" style="font-size: 25px;"></i> </a></li>
+        <li>
+            <a href="index.php"><i class="fas fa-home" style="font-size: 25px;"></i> </a></li>
             <li><a href="#"><i class="fas fa-compass" style="font-size: 25px; margin: 0px 25px"></i> </a></li>
             <li><a href="#"><i class="fas fa-bell" style="font-size: 25px;"></i> </a></li>
             <li><a href="#"><i class="fas fa-envelope" style="font-size: 25px;  margin: 0px 25px"></i> </a></li>
@@ -123,7 +124,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
                     echo '<p>' . nl2br(htmlspecialchars($row["content"])) . '</p>';
                     echo '<div class="post-buttons" style="padding: 10px 0; display:flex; gap: 100px;">';
 
-                    // Like Button Form
+                    // Get the like count for this post
+                    $like_count_sql = "SELECT COUNT(*) as like_count FROM likes WHERE post_id = ?";
+                    $like_count_stmt = $conn->prepare($like_count_sql);
+                    $like_count_stmt->bind_param("i", $row["id"]);
+                    $like_count_stmt->execute();
+                    $like_count_result = $like_count_stmt->get_result();
+                    $like_count_row = $like_count_result->fetch_assoc();
+
+                    // Like Button Form with count
+                    echo '<div style="display: flex; align-items: center; gap: 10px;">';
                     echo '<form action="" method="post" style="display: inline;">';
                     echo '<input type="hidden" name="like_post_id" value="' . $row["id"] . '">';
                     echo '<button type="submit" style="background: none; border: none; cursor: pointer;">';
@@ -140,9 +150,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
                     } else {
                         echo '<i class="fa-regular fa-heart" style="font-size: 30px; color:black;"></i>';
                     }
-
                     echo '</button>';
                     echo '</form>';
+
+                    // Display like count
+                    echo '<span style="font-size: 14px;">' . 
+                         ($like_count_row['like_count'] ?? '0') . ' likes</span>';
+                    echo '</div>';
 
                     // Comment Button
                     echo '<button onclick="toggleCommentForm(' . $row["id"] . ')" style="background: none; border: none; cursor: pointer;">';
@@ -174,6 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
 
                     if ($comment_result->num_rows > 0) {
                         echo '<div class="comments">';
+                        echo '<p style="margin-top: 10px; font-size:12px;">Comments:</p>';
                         while ($comment_row = $comment_result->fetch_assoc()) {
                             echo '<div class="comment">';
                             echo '<strong>' . htmlspecialchars($comment_row["name"]) . ':</strong> ';
