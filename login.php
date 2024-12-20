@@ -6,6 +6,7 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="registration.css"> 
+    <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -103,5 +104,11 @@
         <p class='loginHere'>Don't have an account? <a href="registration.php">Register Now</a></p>
     </div>
     </main>
+    <footer>
+        <p>&copy; 2024 <span class='flogo'>art</span> . All rights reserved.</p>
+        <p style="margin-top:10px;">
+        <a href="https://arburhan.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-heart animated-love"></i> AR Burhan <i class="fa-solid fa-heart animated-love endlove"></i></a>
+        </p>
+    </footer>
 </body>
 </html>
