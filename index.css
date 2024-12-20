@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rochester&display=swap');
+
 /* Reset default browser styles */
 * {
     margin: 0;
@@ -110,4 +112,45 @@ footer {
     background-color: #4267B2;
     color: white;
     width: 100%;
+}
+
+.nlogo,
+.flogo {
+    font-family: "Rochester", serif;
+}
+
+p>a {
+    color: white;
+    text-decoration: none;
+}
+
+.nlogo {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.flogo {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+@keyframes loveBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animated-love {
+    display: inline-block;
+    animation: loveBounce 2s infinite;
+}
+
+.endlove {
+    animation-delay: 1s;
 }

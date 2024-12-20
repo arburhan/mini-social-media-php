@@ -73,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="navbar.css">
     <script src="https://kit.fontawesome.com/73e098e640.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script>
     function toggleCommentForm(postId) {
         var form = document.getElementById('comment-form-' + postId);
@@ -86,16 +87,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
 </head>
 <body>
     <header>
-        <div class="logo">MySocialApp</div>
+        <div class="nlogo">art</div>
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">Notifications</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Profile</a></li>
-            </ul>
-        </nav>
+        <ul>
+        <li><a href="#"><i class="fas fa-home" style="font-size: 25px;"></i> </a></li>
+            <li><a href="#"><i class="fas fa-compass" style="font-size: 25px; margin: 0px 25px"></i> </a></li>
+            <li><a href="#"><i class="fas fa-bell" style="font-size: 25px;"></i> </a></li>
+            <li><a href="#"><i class="fas fa-envelope" style="font-size: 25px;  margin: 0px 25px"></i> </a></li>
+            <li><a href="#"><i class="fas fa-user" style="font-size: 25px;"></i> </a></li>
+        </ul>
+    </nav>
     </header>
     <main>
         <section class="status-update">
@@ -190,10 +191,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 MySocialApp. All rights reserved.</p>
+        <p>&copy; 2024 <span class='flogo'>art</span> . All rights reserved.</p>
+        <p style="margin-top:10px;">
+        <a href="https://arburhan.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-heart animated-love"></i> AR Burhan <i class="fa-solid fa-heart animated-love endlove"></i></a>
+        </p>
     </footer>
     <?php
-    // Close the database connection
     $conn->close();
     ?>
 </body>

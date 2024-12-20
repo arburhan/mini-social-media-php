@@ -6,21 +6,22 @@
     <title>Registration Page</title>
     <link rel="stylesheet" href="registration.css"> 
     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <header>
-        <div class="logo">MySocialApp</div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">Notifications</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Profile</a></li>
-            </ul>
-        </nav>
-    </header>
-   <main>
+    <div class="logo">art</div>
+    <nav>
+        <ul>
+        <li><a href="#"><i class="fas fa-home" style="font-size: 25px;"></i> </a></li>
+            <li><a href="#"><i class="fas fa-compass" style="font-size: 25px; margin: 0px 25px"></i> </a></li>
+            <li><a href="#"><i class="fas fa-bell" style="font-size: 25px;"></i> </a></li>
+            <li><a href="#"><i class="fas fa-envelope" style="font-size: 25px;  margin: 0px 25px"></i> </a></li>
+            <li><a href="#"><i class="fas fa-user" style="font-size: 25px;"></i> </a></li>
+        </ul>
+    </nav>
+</header>
+<main>
    <div class="container">
         <h2>Register</h2>
         <?php
@@ -150,9 +151,8 @@
             <br>
             <input type="submit" name="submit" value="Register">
         </form>
-        <p class='loginHere'
-        >Already have an account? <a href="login.php">Login Now</a></p>
+        <p class='loginHere'>Already have an account? <a href="login.php">Login Now</a></p>
     </div>
-   </main>
+</main>
 </body>
 </html>
