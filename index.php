@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
 <body>
     <header>
     <a class="logo" href="index.php">art</a>
-        <nav>
+    <nav>
         <ul>
         <li>
             <a href="index.php"><i class="fas fa-home" style="font-size: 25px;"></i> </a></li>

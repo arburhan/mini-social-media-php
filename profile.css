@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+.profile-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: left;
+}
+
+.profile-container h1 {
+    margin-bottom: 20px;
+}
+
+.profile-container label {
+    font-weight: bold;
+}
+
+.profile-container .edit-icon {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.profile-container .input-field {
+    display: none;
+    margin-top: 10px;
+}
+
+.profile-container .update-button {
+    display: none;
+    margin-top: 10px;
+}
+
+.profile-container p {
+    margin: 10px 0;
+}
+
+.profile-container a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.profile-container a:hover {
+    text-decoration: underline;
+}
