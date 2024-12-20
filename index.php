@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
             <li><a href="#"><i class="fas fa-compass" style="font-size: 25px; margin: 0px 25px"></i> </a></li>
             <li><a href="#"><i class="fas fa-bell" style="font-size: 25px;"></i> </a></li>
             <li><a href="#"><i class="fas fa-envelope" style="font-size: 25px;  margin: 0px 25px"></i> </a></li>
-            <li><a href="#"><i class="fas fa-user" style="font-size: 25px;"></i> </a></li>
+            <li><a href="profile.php"><i class="fas fa-user" style="font-size: 25px;"></i> </a></li>
         </ul>
     </nav>
     </header>
