@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>ART | Login </title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="registration.css"> 
     <link rel="stylesheet" href="footer.css">

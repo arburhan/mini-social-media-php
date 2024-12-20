@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_post_id']) &&
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Social Media App</title>
+    <title>ART | Social Media App</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="footer.css">
