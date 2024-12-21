@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>ART | Login </title>
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="registration.css"> 
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+<header>
+        <a class="logo" href="index.php">art</a>
+        <nav>
+        <ul>
+            <li><a href="index.php"><i class="fas fa-home" style="font-size: 25px;"></i> </a></li>
+            <li><a href="#"><i class="fas fa-compass" style="font-size: 25px; margin: 0px 25px"></i> </a></li>
+            <li><a href="#"><i class="fas fa-bell" style="font-size: 25px;"></i> </a></li>
+            <li><a href="#"><i class="fas fa-envelope" style="font-size: 25px;  margin: 0px 25px"></i> </a></li>
+            <li><a href="profile.php"><i class="fas fa-user" style="font-size: 25px;"></i> </a></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
     <div class="container">
         <h2>Login</h2>
         <?php
@@ -54,7 +70,7 @@
                         $_SESSION['user_name'] = $user['name'];
                         
                         // Redirect to dashboard or home page
-                        header("Location: dashboard.php");
+                        header("Location: index.php");
                         exit();
                     } else {
                         echo "Invalid email or password";
@@ -87,5 +103,12 @@
         </form>
         <p class='loginHere'>Don't have an account? <a href="registration.php">Register Now</a></p>
     </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 <span class='flogo'>art</span> . All rights reserved.</p>
+        <p style="margin-top:10px;">
+        <a href="https://arburhan.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-heart animated-love"></i> AR Burhan <i class="fa-solid fa-heart animated-love endlove"></i></a>
+        </p>
+    </footer>
 </body>
 </html>

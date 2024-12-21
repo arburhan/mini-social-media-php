@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Rochester&display=swap');
+
+/* Header styling */
+header {
+    background-color: #4267B2;
+    color: white;
+    padding: 1px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-family: "Rochester", serif;
+    font-size: 60px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(238, 238, 173);
+}
+
+nav {
+    margin-left: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
